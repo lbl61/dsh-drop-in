@@ -1,5 +1,7 @@
 # dsh-drop-in
 
+> 🌐 中文版：[README.zh.md](README.zh.md)
+
 Drag files from your system file manager straight into the DeepSeek Harness web GUI.
 Files appear as a chip bar above the input box, are sent along with your message
 (including their **absolute paths**), and render as pretty file cards inside the
