@@ -7,7 +7,8 @@ Files appear as a chip bar above the input box, are sent along with your message
 (including their **absolute paths**), and render as pretty file cards inside the
 message bubble. The agent reads the real file paths — no upload, no content copy.
 
-![showcase](assets/screenshots/show-case.png)
+![Chip bar and message cards](assets/screenshots/screenshot-1.png)
+![File cards in the message bubble](assets/screenshots/screenshot-2.png)
 
 ## Features
 

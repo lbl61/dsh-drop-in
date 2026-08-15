@@ -6,7 +6,8 @@
 文件栏里，发送消息时随消息一起发出（含**绝对路径**），并在气泡中渲染成漂亮的文件卡片。
 助手读取的是真实路径——不上传、不复制内容。
 
-![展示](assets/screenshots/show-case.png)
+![文件栏与消息卡片](assets/screenshots/screenshot-1.png)
+![消息气泡中的文件卡片](assets/screenshots/screenshot-2.png)
 
 ## 特性
 
