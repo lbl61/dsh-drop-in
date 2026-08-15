@@ -1,6 +1,6 @@
 ﻿{
     "name":  "dsh-drop-in",
-    "version":  "1.1.0",
+    "version":  "1.1.1",
     "description":  "鎷栧叆鏂囦欢锛氳緭鍏ユ涓婃柟鏂囦欢鏍?+ 闅忔秷鎭彂閫侊紙鍚粷瀵硅矾寰勶級+ 姘旀场鏂囦欢鍗＄墖銆侱rag files into the DeepSeek Harness web GUI and send them with your message (absolute paths included).",
     "type":  "module",
     "main":  "lib/index.js",
@@ -15,6 +15,7 @@
                 },
     "files":  [
                   "lib",
+                  "assets",
                   "cordis.patch.yml",
                   "dsh.plugin.json",
                   "preload-bridge.md",
