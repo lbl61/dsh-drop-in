@@ -1,0 +1,12 @@
+{
+  "name": "dsh-drop-in",
+  "description": "拖入文件：输入框上方文件栏 + 随消息发送（含绝对路径）+ 气泡文件卡片",
+  "version": "1.1.0",
+  "entry": {
+    "name": "dsh-drop-in",
+    "inject": []
+  },
+  "client": {
+    "platform": "web"
+  }
+}

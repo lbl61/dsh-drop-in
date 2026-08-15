@@ -1,0 +1,3 @@
+- insert:
+    - id: drop-in
+      name: 'dsh-drop-in'

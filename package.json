@@ -1,0 +1,41 @@
+{
+  "name": "dsh-drop-in",
+  "version": "1.1.0",
+  "private": true,
+  "description": "拖入文件：输入框上方文件栏 + 随消息发送（含绝对路径）+ 气泡文件卡片。Drag files into the DeepSeek Harness web GUI and send them with your message (absolute paths included).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": { "default": "./lib/index.js" },
+    "./client": { "default": "./lib/client.js" },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "dsh.plugin.json",
+    "preload-bridge.md",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "drag-drop",
+    "file"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
