@@ -1,7 +1,7 @@
-﻿{
+{
     "name":  "dsh-drop-in",
-    "version":  "1.1.1",
-    "description":  "鎷栧叆鏂囦欢锛氳緭鍏ユ涓婃柟鏂囦欢鏍?+ 闅忔秷鎭彂閫侊紙鍚粷瀵硅矾寰勶級+ 姘旀场鏂囦欢鍗＄墖銆侱rag files into the DeepSeek Harness web GUI and send them with your message (absolute paths included).",
+    "version":  "1.2.0",
+    "description":  "拖入/粘贴文件：输入框上方文件栏（chips）+ @文件名 光标内联插入 + 随消息发送（含绝对路径）+ 气泡文件卡片。Drag/paste files into the DeepSeek Harness web GUI and send them with your message (absolute paths included).",
     "type":  "module",
     "main":  "lib/index.js",
     "exports":  {

@@ -1,81 +1,62 @@
-﻿# dsh-drop-in
+# dsh-drop-in
 
-> 馃寪 涓枃鐗堬細[README.zh.md](README.zh.md)
+> 🌐 中文版：[README.zh.md](README.zh.md)
 
 Drag files from your system file manager straight into the DeepSeek Harness web GUI.
-Files appear as a chip bar above the input box, are sent along with your message
-(including their **absolute paths**), and render as pretty file cards inside the
-message bubble. The agent reads the real file paths 鈥?no upload, no content copy.
+Files appear as a chip bar above the input box, or are inserted inline as `@filename`
+at the caret when the composer is focused; they are sent along with your message
+(including their **absolute paths**), and render as file cards inside the user bubble.
 
 ![Chip bar and message cards](assets/screenshots/screenshot-1.png)
-![File cards in the message bubble](assets/screenshots/screenshot-2.png)
+![File cards in the user bubble](assets/screenshots/screenshot-2.png)
 
 ## Features
 
-- 馃柋锔?Drag **any file or folder** from the OS into the page (images are treated as
-  files too 鈥?no more "drop images here" mask taking over)
-- 馃搶 A chip bar above the composer: icon + name + size + path status, per-file
-  removal (`脳`), deduplicated (same path / name+size+mtime won't be added twice)
-- 鉁夛笍 When you send the message, the file list is attached automatically as a
-  `馃搸 鎷栧叆鏂囦欢` block (name, size, **absolute path**) 鈥?the bubble renders it as
-  file cards; hover a card to see the full path
-- 馃敡 A `dropped_files` tool so the agent can also list not-yet-sent files
-- 馃枼锔?Works in the DSH Desktop shell (Electron): absolute paths come from a tiny
-  `preload.js` bridge (`webUtils.getPathForFile`, the only way in modern Electron)
-- 馃寪 Fallback: in a plain browser (no preload bridge), small text files are copied
-  into `.dsh-drops/` under the session workspace so the agent can still read them
+- 📎 Drag in **any file/folder** (images are treated as files — the official image-drop overlay no longer steals the drag)
+- ✏️ **Inline `@` references**: with the composer focused, dropped/pasted files are inserted at the caret as `@filename` (e.g. `你好@报告.zip看一下这个文件`); on send they are converted to `@[filename](absolute-path)` and rendered as inline file cards in the bubble — the agent can read the file straight from the path
+- 🖼️ **Clipboard paste**: pasting an image/file into the composer goes through the same pipeline instead of the native image-attachment rail
+- 🚀 Chip bar above the input: icon + name + size + path status, removable (×), deduplicated by path
+- ✔️ Messages automatically carry a `📎 拖入文件` block (name, size, **absolute path**), rendered as file cards (hover for the full path)
+- 🔍 A `dropped_files` tool lets the agent list still-unsent dropped files
+- 🖥️ Under DSH Desktop (Electron) absolute paths come from the preload bridge (`webUtils.getPathForFile` — the only path source in modern Electron)
+- 🌐 Fallback: in a plain browser (no preload bridge) text files are copied to the workspace `.dsh-drops/`, and pasted binaries are persisted there via base64, so the agent can still read them
 
 ## Install
 
 ```sh
-dsh plugin --profile web add https://github.com/lbl61/dsh-drop-in/archive/refs/tags/v1.1.1.tar.gz
+dsh plugin --profile web add https://github.com/lbl61/dsh-drop-in/archive/refs/tags/v1.2.0.tar.gz
 ```
 
-or install the package into the web profile manually (bundle form):
-
-1. Unpack `dsh-drop-in` into `~/.dsh/profiles/web/node_modules/dsh-drop-in/`
-2. Add `"dsh-drop-in"` to the `dsh.profile.bundles` array in
-   `~/.dsh/profiles/web/package.json`
-3. Restart `dsh web` (DSH Desktop: fully quit and reopen, or
-   `window.dshDesktop.restartService()` from the DevTools console)
+Manual (bundle) install:
+1. Extract `dsh-drop-in` into `~/.dsh/profiles/web/node_modules/dsh-drop-in/`
+2. Add `"dsh-drop-in"` to the `dsh.profile.bundles` array in `~/.dsh/profiles/web/package.json`
+3. Restart `dsh web` (DSH Desktop: quit fully and reopen, or run `window.dshDesktop.restartService()` in DevTools)
 
 ## Usage
 
-1. Drag files from Explorer / Finder / Files into the chat page.
-2. The chip bar above the input box shows what will be attached.
-3. Type your message and send (Enter or the send button).
-4. The message bubble shows the files as cards 鈥?the agent receives the absolute
-   paths in the message and can read the files directly with its own tools.
+1. Drag files from Explorer into the chat page (or paste an image/file into the composer)
+2. Composer focused → files are inserted at the caret as `@filename`; otherwise they appear in the chip bar above the input
+3. Type your message and send (Enter / Ctrl+Enter / the send button all work)
+4. The bubble shows file cards — the agent receives the absolute path (`@[name](path)` or the `📎 拖入文件` block) and can read the files
 
 ## How it works
 
-- The client half intercepts file drags in the capture phase (so the built-in
-  image-drop flow never hijacks them), keeps a per-session chip bar
-  (`conversation.input.dock`), renders the user message bubble with file cards
-  (`conversation.chat.node` key `user`), and appends the `馃搸 鎷栧叆鏂囦欢` block to the
-  draft right before submit (both Enter and the send button).
-- The host half keeps a per-session registry, serves it to the agent through the
-  `dropped_files` tool, and (browser fallback) writes text files into
-  `.dsh-drops/<sessionId>/`.
-- Absolute paths in the DSH Desktop shell require the preload bridge (see
-  [preload-bridge.md](preload-bridge.md)); it is the only way to get real paths in
-  modern Electron (Electron 鈮?32 removed `File.path`).
+- The client half intercepts file drags in the capture phase (the official image-upload flow never steals the events), keeps a per-session chip bar (`conversation.input.dock`), renders user bubbles with file cards (`conversation.chat.node` `user` key), and stitches the `📎 拖入文件` block into the draft before submit (Enter, Ctrl+Enter, and the send button are all covered); with the composer focused it inserts `@filename` at the caret instead and expands it to `@[filename](path)` on send
+- The host half keeps the per-session file registry behind the `dropped_files` tool, writes fallback text copies to `.dsh-drops/<sessionId>/`, and persists pasted binaries via the `file-copy` route (base64)
+- Absolute paths under DSH Desktop rely on the preload bridge (see [preload-bridge.md](preload-bridge.md)): Electron ≥ 32 removed `File.path`
 
 ## Configuration
 
-| Setting | Meaning |
+| Setting | Description |
 | --- | --- |
-| `enabled` | Master switch (Settings 鈫?鏂囦欢鎷栧叆). When off, drags fall through to the built-in behavior. |
+| `enabled` | Master switch (Settings → 文件拖入). When off, drag/paste falls back to built-in behavior. |
 
 ## Uninstall
 
-1. Remove `dsh-drop-in` from `dsh.profile.bundles` in
-   `~/.dsh/profiles/web/package.json`
+1. Remove `dsh-drop-in` from the `dsh.profile.bundles` array in `~/.dsh/profiles/web/package.json`
 2. Delete `~/.dsh/profiles/web/node_modules/dsh-drop-in/`
 3. Restart `dsh web`
 
 ## License
 
 MIT
-
-
