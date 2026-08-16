@@ -1,50 +1,61 @@
-﻿# dsh-drop-in
+# dsh-drop-in
 
-> 馃寪 English: [README.md](README.md)
+> 🌐 English: [README.md](README.md)
 
-鎶婄郴缁熸枃浠剁鐞嗗櫒閲岀殑鏂囦欢鐩存帴鎷栬繘 DeepSeek Harness Web 鐣岄潰銆傛枃浠朵細鏄剧ず鍦ㄨ緭鍏ユ涓婃柟鐨勬枃浠舵爮閲岋紝鎴栧湪杈撳叆妗嗘湁鐒︾偣鏃朵互**鍘熺敓寮曠敤姘旀场**锛堟枃浠惰兌鍥婏級鍐呭祵鎻掑叆鍒版鍦ㄨ緭鍏ョ殑鏂囧瓧涓棿锛涘彂閫佹秷鎭椂闅忔秷鎭竴璧峰彂鍑猴紙鍚?**缁濆璺緞**锛夛紝骞跺湪姘旀场涓覆鏌撴垚鏂囦欢鍗＄墖銆傚姪鎵嬭鍙栫殑鏄湡瀹炶矾寰勨€斺€斾笉涓婁紶銆佷笉澶嶅埗鍐呭锛堟祻瑙堝櫒鍏滃簳鏃跺皬鏂囦欢浼氬鍒跺埌宸ヤ綔鍖猴級銆?
-![鏂囦欢鏍忎笌娑堟伅鍗＄墖](assets/screenshots/screenshot-1.png)
-![娑堟伅姘旀场涓殑鏂囦欢鍗＄墖](assets/screenshots/screenshot-2.png)
+把系统文件管理器里的文件直接拖进 DeepSeek Harness Web 界面。文件会显示在输入框上方的文件栏里，或在输入框有焦点时以**原生引用气泡**（文件胶囊）内嵌插入到正在输入的文字中间；发送消息时随消息一起发出（含 **绝对路径**），并在气泡中渲染成文件卡片。助手读取的是真实路径——不上传、不复制内容（浏览器兜底时小文件会复制到工作区）。
 
-## 鐗规€?
-- 馃搸 鎷栧叆**浠绘剰鏂囦欢/鏂囦欢澶?*锛堝浘鐗囦篃鎸夋枃浠跺鐞嗏€斺€斿畼鏂?鎷栧浘鐗?閬僵涓嶅啀鎶㈠崰鎷栨嫿锛?- 馃 **杈撳叆妗嗗唴宓屾枃浠舵皵娉?*锛氳緭鍏ユ鏈夌劍鐐规椂鎷栧叆/绮樿创鏂囦欢锛屼細鍦ㄥ厜鏍囧鎻掑叆鍘熺敓寮曠敤姘旀场锛堟枃浠惰兌鍥婏紝鍙彃鍦ㄦ枃瀛椾腑闂达紝濡?`浣犲ソ銆屾姤鍛?zip銆嶇湅涓€涓嬭繖涓枃浠禶锛夛紱鍙戦€佹椂姘旀场鑷姩灞曞紑涓哄惈**缁濆璺緞**鐨勫紩鐢紙`@[鏂囦欢鍚峕(缁濆璺緞)`锛夛紝鑱婂ぉ姘旀场涓覆鏌撲负鏂囦欢鍗＄墖锛屽姪鎵嬪彲鐩存帴鎸夎矾寰勮鍙?- 馃柤锔?**鍓创鏉跨矘璐?*锛氬湪杈撳叆妗嗙矘璐村浘鐗?鏂囦欢璧板悓涓€绠￠亾锛堟枃浠舵皵娉℃垨鏂囦欢鏍忥級锛屼笉鍐嶈惤鍏ュ畼鏂瑰師鐢熷浘鐗囬檮浠惰建
-- 馃殌 杈撳叆妗嗕笂鏂规枃浠舵爮锛氬浘鏍?+ 鍚嶇О + 澶у皬 + 璺緞鐘舵€侊紝鍙崟鐙Щ闄わ紙脳锛夛紝鑷姩鍘婚噸锛堝悓璺緞涓嶉噸澶嶆坊鍔狅級
-- 鉁旓笍 鍙戦€佹秷鎭椂鑷姩闄勫甫 `馃搸 鎷栧叆鏂囦欢` 鍧楋紙鍚嶇О銆佸ぇ灏忋€?*缁濆璺緞**锛夛紝姘旀场娓叉煋涓烘枃浠跺崱鐗囷紝鎮仠鍙湅瀹屾暣璺緞
-- 馃攳 鎻愪緵 `dropped_files` 宸ュ叿锛屽姪鎵嬪彲闅忔椂璇诲彇灏氭湭鍙戦€佺殑鎷栧叆鏂囦欢
-- 馃枼锔?DSH Desktop锛圗lectron锛変笅缁濆璺緞鏉ヨ嚜 preload 灏忔ˉ锛坄webUtils.getPathForFile`锛屾柊鐗?Electron 鍞竴鍙栬矾寰勬柟寮忥級
-- 馃寪 鍏滃簳锛氭櫘閫氭祻瑙堝櫒锛堟棤 preload 妗ワ級涓嬶紝鏂囨湰鏂囦欢浼氬鍒跺埌宸ヤ綔鍖?`.dsh-drops/`锛岀矘璐寸殑浜岃繘鍒舵枃浠朵篃浼氫互 base64 钀界洏鍒板悓涓€鐩綍锛屽姪鎵嬩粛鍙鍙?
-## 瀹夎
+![文件栏与消息卡片](assets/screenshots/screenshot-1.png)
+![消息气泡中的文件卡片](assets/screenshots/screenshot-2.png)
+
+## 特性
+
+- 📎 拖入**任意文件/文件夹**（图片也按文件处理——官方"拖图片"遮罩不再抢占拖拽）
+- 🫧 **输入框内嵌文件气泡**：拖入/粘贴文件会在光标处插入原生引用气泡（文件胶囊，可插在文字中间）；气泡显示 **`类型 文件名`**（如 `LNK 坚果云.lnk`，长名截断时类型仍可见，悬停看全名）
+- 📤 **发送即路径**：发送时气泡自动展开为含**绝对路径**的引用（`@[文件名](绝对路径)`），聊天气泡中渲染为文件卡片（带类型徽章），助手可直接按路径读取
+- 🔀 **agent 运行中发送（不打断）** 的消息同样渲染文件卡片
+- 🖼️ **剪贴板粘贴**：在输入框粘贴图片/文件走同一管道（文件气泡或文件栏），不再落入官方原生图片附件轨；粘贴的二进制以 base64 落盘到工作区 `.dsh-drops/<会话id>/`
+- 🚀 输入框上方文件栏：图标 + 名称 + 大小 + 路径状态，可单独移除（×），自动去重（同路径不重复添加）
+- ✔️ 回车 / Ctrl+Enter / 发送按钮三条路径全覆盖；chips 随消息发送后自动清空
+- 🔍 提供 `dropped_files` 工具，助手可随时读取尚未发送的拖入文件
+- 🖥️ DSH Desktop（Electron）下绝对路径来自 preload 小桥（`webUtils.getPathForFile`，新版 Electron 唯一取路径方式）
+- 🌐 兜底：普通浏览器（无 preload 桥）下，文本文件会复制到工作区 `.dsh-drops/`
+
+## 安装
 
 ```sh
 dsh plugin --profile web add https://github.com/lbl61/dsh-drop-in/archive/refs/tags/v1.3.0.tar.gz
 ```
 
-鎴栨墜鍔ㄥ畨瑁咃紙bundle 褰㈡€侊級锛?1. 瑙ｅ帇 `dsh-drop-in` 鍒?`~/.dsh/profiles/web/node_modules/dsh-drop-in/`
-2. 鍦?`~/.dsh/profiles/web/package.json` 鐨?`dsh.profile.bundles` 鏁扮粍鍔犲叆 `"dsh-drop-in"`
-3. 閲嶅惎 `dsh web`锛圖SH Desktop锛氬畬鍏ㄩ€€鍑哄啀鎵撳紑锛屾垨鍦?DevTools 鎺у埗鍙版墽琛?`window.dshDesktop.restartService()`锛?
-## 浣跨敤
+或手动安装（bundle 形态）：
+1. 解压 `dsh-drop-in` 到 `~/.dsh/profiles/web/node_modules/dsh-drop-in/`
+2. 在 `~/.dsh/profiles/web/package.json` 的 `dsh.profile.bundles` 数组加入 `"dsh-drop-in"`
+3. 重启 `dsh web`（DSH Desktop：完全退出再打开，或在 DevTools 控制台执行 `window.dshDesktop.restartService()`）
 
-1. 浠庤祫婧愮鐞嗗櫒鎶婃枃浠舵嫋杩涜亰澶╅〉锛堟垨鐩存帴鍦ㄨ緭鍏ユ绮樿创鍥剧墖/鏂囦欢锛?2. 杈撳叆妗嗘湁鐒︾偣 鈫?鏂囦欢浠?*鍘熺敓寮曠敤姘旀场**锛堟枃浠惰兌鍥婏級鎻掑叆鍒板厜鏍囧锛屽彲鎻掑湪鏂囧瓧涓棿锛涘惁鍒欏嚭鐜板湪杈撳叆妗嗕笂鏂圭殑鏂囦欢鏍?3. 杈撳叆娑堟伅骞跺彂閫侊紙鍥炶溅 / Ctrl+Enter / 鍙戦€佹寜閽潎鏀寔锛?4. 娑堟伅姘旀场涓樉绀烘枃浠跺崱鐗団€斺€斿姪鎵嬪湪娑堟伅閲岀洿鎺ユ嬁鍒扮粷瀵硅矾寰勶紙`@[鏂囦欢鍚峕(璺緞)` 鎴?`馃搸 鎷栧叆鏂囦欢` 鍧楋級锛屽彲鐢ㄨ嚜宸辩殑宸ュ叿璇诲彇鏂囦欢
+## 使用
 
-## 宸ヤ綔鍘熺悊
+1. 从资源管理器把文件拖进聊天页（或直接在输入框粘贴图片/文件）
+2. 输入框有焦点 → 文件以**原生引用气泡**（文件胶囊）插入到光标处，可插在文字中间；否则出现在输入框上方的文件栏
+3. 输入消息并发送（回车 / Ctrl+Enter / 发送按钮均支持；agent 运行中也可"不打断"发送）
+4. 消息气泡中显示文件卡片——助手在消息里直接拿到绝对路径（`@[文件名](路径)` 或 `📎 拖入文件` 块），可用自己的工具读取文件
 
-- 瀹㈡埛绔崐鍦ㄦ崟鑾烽樁娈垫嫤鎴枃浠舵嫋鎷斤紙瀹樻柟鍥剧墖涓婁紶娴佺▼涓嶄細鎶㈣蛋浜嬩欢锛夛紝缁存姢鎸変細璇濋殧绂荤殑鏂囦欢鏍忥紙`conversation.input.dock`锛夛紝鐢ㄦ枃浠跺崱鐗囨覆鏌撶敤鎴锋秷鎭皵娉★紙`conversation.chat.node` 鐨?`user` key锛夛紝骞跺湪鎻愪氦鍓嶆妸 `馃搸 鎷栧叆鏂囦欢` 鍧楁嫾杩?draft锛堝洖杞︺€丆trl+Enter 鍜屽彂閫佹寜閽笁鏉¤矾寰勯兘瑕嗙洊锛夛紱杈撳叆妗嗘湁鐒︾偣鏃舵敼涓洪€氳繃 `slash/input-insert-reference` scoped 浜嬩欢鎻掑叆**鍘熺敓寮曠敤姘旀场**锛圲+FFFC occurrence锛屽悎鎴愬櫒 backdrop 娓叉煋鏂囦欢鑳跺泭锛夛紝鎻愪氦鏃剁敱娉ㄥ唽鐨?`inputTriggers` codec 搴忓垪鍖栦负 `@[鏂囦欢鍚峕(缁濆璺緞)`
-- 瀹夸富鍗婄淮鎶ゆ寜浼氳瘽鐨勬枃浠剁櫥璁拌〃锛岄€氳繃 `dropped_files` 宸ュ叿鎻愪緵缁欏姪鎵嬶紱锛堟祻瑙堝櫒鍏滃簳鏃讹級鎶婃枃鏈枃浠跺啓鍏?`.dsh-drops/<sessionId>/`锛岀矘璐寸殑浜岃繘鍒舵枃浠剁粡 `file-copy` 璺敱浠?base64 钀界洏鍒板悓涓€鐩綍
-- DSH Desktop 涓嬬粷瀵硅矾寰勪緷璧?preload 妗ワ紙瑙?[preload-bridge.md](preload-bridge.md)锛夛細Electron 鈮?32 宸茬Щ闄?`File.path`锛岃繖鏄敮涓€鑳芥嬁鍒扮湡瀹炶矾寰勭殑鏂瑰紡
+## 工作原理
 
-## 閰嶇疆
+- 客户端半在捕获阶段拦截文件拖拽（官方图片上传流程不会抢走事件），维护按会话隔离的文件栏（`conversation.input.dock`），用文件卡片渲染用户消息气泡（`conversation.chat.node` 的 `user`/`steering` key），并在提交前把 `📎 拖入文件` 块拼进 draft（回车、Ctrl+Enter 和发送按钮三条路径都覆盖）；输入框有焦点时通过 `slash/input-insert-reference` scoped 事件插入**原生引用气泡**（U+FFFC occurrence，合成器 backdrop 渲染文件胶囊），提交时由注册的 `inputTriggers` codec 序列化为 `@[文件名](绝对路径)`
+- 宿主半维护按会话的文件登记表，通过 `dropped_files` 工具提供给助手；文本文件写入 `.dsh-drops/<sessionId>/`，粘贴的二进制经 `file-copy` 路由以 base64 落盘到同一目录（显式 workspace-write sandbox 策略，根 = 会话 cwd）
+- DSH Desktop 下绝对路径依赖 preload 桥（见 [preload-bridge.md](preload-bridge.md)）：Electron ≥ 32 已移除 `File.path`
 
-| 璁剧疆椤?| 璇存槑 |
+## 配置
+
+| 设置项 | 说明 |
 | --- | --- |
-| `enabled` | 鎬诲紑鍏筹紙璁剧疆 鈫?鏂囦欢鎷栧叆锛夈€傚叧闂悗鎷栨嫿/绮樿创琛屼负鍥炶惤鍒板唴缃€昏緫銆?|
+| `enabled` | 总开关（设置 → 文件拖入）。关闭后拖拽/粘贴行为回落到内置逻辑。 |
 
-## 鍗歌浇
+## 卸载
 
-1. 浠?`~/.dsh/profiles/web/package.json` 鐨?`dsh.profile.bundles` 绉婚櫎 `dsh-drop-in`
-2. 鍒犻櫎 `~/.dsh/profiles/web/node_modules/dsh-drop-in/`
-3. 閲嶅惎 `dsh web`
+1. 从 `~/.dsh/profiles/web/package.json` 的 `dsh.profile.bundles` 移除 `dsh-drop-in`
+2. 删除 `~/.dsh/profiles/web/node_modules/dsh-drop-in/`
+3. 重启 `dsh web`
 
-## 璁稿彲
+## 许可
 
 MIT
-
